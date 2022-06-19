@@ -1,0 +1,492 @@
+﻿<Window x:Class="LittleERP.View.ControlPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LittleERP.View"
+        mc:Ignorable="d"
+        Title="ControlPanel" Height="878.198" Width="1097.395" Closing="Window_Closing">
+    <Window.Resources>
+        <DataTemplate x:Key="ComboTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderThickness="1" BorderBrush="Black" >
+                    <TextBlock Text="{Binding Path=id}" Margin="5"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="Black" >
+                    <TextBlock Text="{Binding Path=name}" Margin="5"/>
+                </Border>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3.9*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tbcPanel" Grid.Row="1" Grid.ColumnSpan="3" TabStripPlacement="Left" Height="Auto" Width="Auto" Margin="10">
+            <TabItem x:Name="tbHome" Header="Home" Padding="10">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="tbUsers" Header="Users" Padding="10">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgvUsers" Grid.Row="1" IsReadOnly="true" AutoGenerateColumns="False" Margin="20" BorderThickness="2" BorderBrush="Black">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding iduser}" Header="IDUSER"/>
+                            <DataGridTextColumn Binding="{Binding name}" Header="NAME" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" x:Name="btnAdd" Content="ADD" FontWeight="Bold" FontSize="18" Click="btnAdd_Click" Margin="10,32,0,32.6" Width="100" ToolTip="Create a new user"/>
+                        <Button Grid.Column="1" x:Name="btnMod" Content="MOD" FontWeight="Bold" FontSize="18" Click="btnMod_Click" Margin="10,32,0,32.6" Width="100" ToolTip="Modify a selected user"/>
+                        <Button Grid.Column="2" x:Name="btnDel" Content="DEL" FontWeight="Bold" FontSize="18" Click="btnDel_Click" Margin="10,32,0,32.6" Width="99" ToolTip="Delete a selected user"/>
+                        <Button Grid.Column="3" x:Name="btnRolP" Content="ROL" FontWeight="Bold" FontSize="18" Click="btnRolP_Click" Margin="9.8,32,0,32.6" Height="37" Width="100"/>
+                    </Grid>
+                    <Label x:Name="lblUserList" Content="USER LIST" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"></Label>
+                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="10">
+                        <Button x:Name="btnSearch" Content="Search by name" Click="btnSearch_Click" Margin="10" FontSize="20" ToolTip="Search a user by name"/>
+                        <TextBox x:Name="txtSearch" FontSize="20" Margin="10"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbProfile" Header="Profile" Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Center" Margin="10" >
+                        <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+                            <Label x:Name="lblpreviouspass" Content="Previous Password" Margin="5" Width="120"/>
+                            <PasswordBox x:Name="pwdPrevious" FontSize="12" Width="180"/>
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+                            <Label x:Name="lblNewPass" Content="New Password" Margin="5" Width="120"/>
+                            <PasswordBox x:Name="pwdNewPassword" FontSize="12" Width="180"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+                            <Label x:Name="lblRepeatPass" Content="Repeat Password" Margin="5" Width="120"/>
+                            <PasswordBox x:Name="pwdRepeatPassword" FontSize="12" Width="180"/>
+                        </StackPanel>
+                        <Button x:Name="btnChangePassword" Content="OK" Click="btnChangePassword_Click" FontSize="20" Margin="20,20,0,20" Height="37" Width="429"/>
+                    </StackPanel>
+
+                    <GroupBox Header="Roles" Grid.Column="1">
+                        <Grid x:Name="grdRoles">
+                            <ListBox x:Name="lstRolesProfile">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding name}"></TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbiCustomers" Header="Customers" Padding="10">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgvCustomers" Grid.Row="1" Grid.Column="0" IsReadOnly="true" AutoGenerateColumns="False" Margin="20" SelectionChanged="dgvCustomers_SelectionChanged" BorderThickness="2" BorderBrush="Black" MouseDoubleClick="dgvCustomers_MouseDoubleClick">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding NIF}" Header="NIF"/>
+                            <DataGridTextColumn Binding="{Binding name}" Header="NAME" />
+                            <DataGridTextColumn Binding="{Binding surname}" Header="SURNAME" />
+                            <DataGridTextColumn Binding="{Binding email}" Header="EMAIL" />
+                            <DataGridTextColumn Binding="{Binding phone}" Header="PHONE" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnNewCustomer" Grid.Column="0" Content="NEW" FontWeight="Bold" FontSize="18" Margin="10,32,0,32.6" Width="220" Click="btnNewCustomer_Click" Height="37" ToolTip="Add a new customer"/>
+                        <Button x:Name="btnDelCustomer" Grid.Column="1" Content="DEL" FontWeight="Bold" FontSize="18" Margin="10,32,0,32.6" Height="37" Width="219" Click="btnDelCustomer_Click" ToolTip="Delete a selected customer"/>
+                    </Grid>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBox x:Name="txtSearchCustomer" Grid.Row="0" Grid.Column="1" Margin="10" Width="200" Height="25" Text="Search..." VerticalContentAlignment="Center" KeyUp="txtSearchCustomer_KeyUp" />
+                        <ComboBox SelectedIndex="0" x:Name="cboCustomerCategory" VerticalAlignment="Center" Height="32" Margin="0,38,0,39" Width="103">
+                            <TextBlock Text="NAME"></TextBlock>
+                            <TextBlock Text="NIF"></TextBlock>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel x:Name="stcFormCustomer" Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="NIF:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <TextBox x:Name="txtNIF" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="NAME:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <TextBox x:Name="txtNameCustomer" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="SURNAME:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <TextBox x:Name="txtSurname" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="PHONE:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <TextBox x:Name="txtPhone" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="EMAIL:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <TextBox x:Name="txtEmail" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="ADDRESS:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <TextBox x:Name="txtAddress" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="REGION:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <ComboBox x:Name="cboRegions" Width="200" ItemTemplate="{StaticResource ComboTemplate}" SelectionChanged="cboRegions_SelectionChanged"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="STATE:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <ComboBox x:Name="cboStates" Width="200" ItemTemplate="{StaticResource ComboTemplate}" SelectionChanged="cboStates_SelectionChanged"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="CITY:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <ComboBox x:Name="cboCities" Width="200" ItemTemplate="{StaticResource ComboTemplate}" SelectionChanged="cboCities_SelectionChanged"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="ZIPCODE:" FontSize="12" Margin="0,0,10,0" Width="65" HorizontalAlignment="Right"/>
+                            <StackPanel Orientation="Vertical" Margin="0">
+                                <TextBox x:Name="txtZipcode" FontSize="12" Width="200" Height="25" KeyUp="txtZipcode_KeyUp"/>
+                                <ComboBox x:Name="cboZipcodes" Width="200" ItemTemplate="{StaticResource ComboTemplate}" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <Button x:Name="btnSaveCustomer" Content="SAVE" Margin="10,15,0,0" Height="30" Click="btnSaveCustomer_Click" HorizontalContentAlignment="Center" Width="449" ToolTip="Save changes and adds/modify a customer to the database"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbiProducts" Header="Products" Padding="10">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgvProducts" Grid.Row="1" Grid.Column="0" IsReadOnly="true" AutoGenerateColumns="False" Margin="20" BorderThickness="2" BorderBrush="Black" SelectionChanged="dgvProducts_SelectionChanged" MouseDoubleClick="dgvProducts_MouseDoubleClick">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding id}" Header="ID"/>
+                            <DataGridTextColumn Binding="{Binding name}" Header="NAME" />
+                            <DataGridTextColumn Binding="{Binding size.name}" Header="SIZE" />
+                            <DataGridTextColumn Binding="{Binding brand.name}" Header="BRAND" />
+                            <DataGridTextColumn Binding="{Binding price}" Header="PRICE" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnProductNew" Grid.Column="0" Content="NEW" FontWeight="Bold" FontSize="18" Margin="10,32,0,32.6" Width="220" Click="btnProductNew_Click" ToolTip="Add a new product"/>
+                        <Button x:Name="btnProductDelete" Grid.Column="1" Content="DEL" FontWeight="Bold" FontSize="18" Margin="10,32,0,32.6" Height="37" Width="219" Click="btnProductDelete_Click" ToolTip="Delete a selected product"/>
+                    </Grid>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBox x:Name="txtSearchProduct" Grid.Row="0" Grid.Column="1" Margin="10" Width="200" Height="25" Text="Search..." VerticalContentAlignment="Center" KeyUp="txtSearchProduct_KeyUp" />
+                        <ComboBox SelectedIndex="0" x:Name="cboProductCategory" VerticalAlignment="Center" Height="32" Margin="0,38,0,39" Width="103">
+                            <TextBlock Text="NAME"></TextBlock>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="25">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="NAME:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <TextBox x:Name="txtProductName" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="SIZE:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <ComboBox x:Name="cboProductSize" ItemTemplate="{StaticResource ComboTemplate}" Width="200"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="BRAND:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <ComboBox x:Name="cboProductBrand" ItemTemplate="{StaticResource ComboTemplate}" Width="200"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="STOCK:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <TextBox x:Name="txtProductStock" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="PRICE:" FontSize="12" Margin="0,0,10,0" Width="60"/>
+                            <TextBox x:Name="txtProductPrice" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <Button x:Name="btnProductSave" Content="SAVE" Margin="10,15,0,0" Height="30" Width="409" Click="btnProductSave_Click" ToolTip="Save changes and adds/modify a product to the database"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbiSuppliers" Header="Suppliers" Padding="10">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lblSuppliers" Content="SUPPLIERS LIST" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></Label>
+                    <DataGrid x:Name="dgvSuppliers" Grid.Row="1" Grid.Column="0" IsReadOnly="true" AutoGenerateColumns="False" Margin="20" BorderThickness="2" BorderBrush="Black" SelectionChanged="dgvSuppliers_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding id}" Header="ID"/>
+                            <DataGridTextColumn Binding="{Binding Name}" Header="NAME" />
+                            <DataGridTextColumn Binding="{Binding Surname}" Header="SURNAME" />
+                            <DataGridTextColumn Binding="{Binding Phone}" Header="PHONE" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                    </Grid>
+
+
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="25">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="NAME:" FontSize="12" Margin="0,0,10,0" Width="80"/>
+                            <TextBox x:Name="txtSupplierName" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="SURNAME:" FontSize="12" Margin="0,0,10,0" Width="80"/>
+                            <TextBox x:Name="txtSupplierSurname" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="ADDRESS:" FontSize="12" Margin="0,0,10,0" Width="80"/>
+                            <TextBox x:Name="txtSupplierAddress" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="PHONE:" FontSize="12" Margin="0,0,10,0" Width="80"/>
+                            <TextBox x:Name="txtSupplierPhone" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Label Content="PAGE:" FontSize="12" Margin="0,0,10,0" Width="80"/>
+                            <TextBox x:Name="txtSupplierPage" FontSize="12" Width="200" Height="25" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbiOrders" Header="Orders" Padding="10">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgvOrders" Grid.Row="1" Grid.ColumnSpan="2" IsReadOnly="true" AutoGenerateColumns="False" Margin="20" BorderThickness="2" BorderBrush="Black">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding id}" Header="IDORDER"/>
+                            <DataGridTextColumn Binding="{Binding dateTime}" Header="DATE" />
+                            <DataGridTextColumn Header="CONF" Width="60" CanUserResize="False">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding confirmed}" Value="-1">
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Color="Green"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding confirmed}" Value="0">
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Color="Red"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <EventSetter Event="MouseDoubleClick" Handler="cell_Click"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="LAB"  Width="60" CanUserResize="False">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding labeled}" Value="-1">
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Color="Green"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding labeled}" Value="0">
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Color="Red"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <EventSetter Event="MouseDoubleClick" Handler="cell_Click"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="SENT"  Width="60" CanUserResize="False">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding sent}" Value="-1">
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Color="Green"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding sent}" Value="0">
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Color="Red"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <EventSetter Event="MouseDoubleClick" Handler="cell_Click"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="INV"  Width="60" CanUserResize="False">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding invoiced}" Value="-1">
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Color="Green"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding invoiced}" Value="0">
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Color="Red"/>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <EventSetter Event="MouseDoubleClick" Handler="cell_Click"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnOrderNew" Grid.Column="0" Content="NEW" FontWeight="Bold" FontSize="18" Margin="10,36,0,36.8" Width="142" ToolTip="Create a new order" Click="btnOrderNew_Click" />
+                        <Button x:Name="btnOrderDelete" Grid.Column="1" Content="DEL" FontWeight="Bold" FontSize="18" Margin="10.4,36,0,36.8" Width="140" Height="36" ToolTip="Delete a selected order" Click="btnOrderDelete_Click"/>
+                        <Button x:Name="btnOrderZoom" Grid.Column="2" Content="ZOOM" FontWeight="Bold" FontSize="18" Margin="9.6,36,0,36.8" Width="141" Height="36" ToolTip="See information about a selected order" Click="btnOrderZoom_Click"/>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1">
+                        <DatePicker x:Name="dtpFechaOrder" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedDateChanged="dtpFechaOrder_SelectedDateChanged"/>
+                        <Button x:Name="btnClearDtpOrder" Content="Clear" Margin="10" ToolTip="Clear the date" Click="btnClearDtpOrder_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbiInvoices" Header="Invoices" Padding="10">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgvInvoices" Grid.Row="1" Grid.ColumnSpan="2" IsReadOnly="true" AutoGenerateColumns="False" Margin="20" BorderThickness="2" BorderBrush="Black" MouseDoubleClick="dgvInvoices_MouseDoubleClick">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding id}" Header="ID"/>
+                            <DataGridTextColumn Binding="{Binding dateTime}" Header="DATE"/>
+                        </DataGrid.Columns>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding accounted}" Value="-1">
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <SolidColorBrush Color="Green"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
+                    </DataGrid>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnInvoiceNew" Grid.Column="0" Content="NEW" FontWeight="Bold" FontSize="18" Margin="10,36,0,35.8" ToolTip="Create a new invoice" Width="101" Click="btnInvoiceNew_Click"/>
+                        <Button x:Name="btnInvoiceDelete" Grid.Column="1" Content="DEL" FontWeight="Bold" FontSize="18" Margin="10.2,36,0,35.8" ToolTip="Delete a selected invoice" Height="37" Width="101" Click="btnInvoiceDelete_Click"/>
+                        <Button x:Name="btnInvoiceZoom" Grid.Column="2" Content="ZOOM" FontWeight="Bold" FontSize="18" Margin="10.4,36,0,35.8" ToolTip="See information about a selected invoice" Width="100" Click="btnInvoiceZoom_Click"/>
+                        <Button x:Name="btnInvoicePrint" Grid.Column="3" Content="PRINT" FontWeight="Bold" FontSize="18" Margin="9.6,36,0,35.8" Height="37" Width="101" Click="btnInvoicePrint_Click"/>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1">
+                        <DatePicker x:Name="dtpFechaInvoice" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedDateChanged="dtpFechaInvoice_SelectedDateChanged"/>
+                        <Button x:Name="btnClearDtpInvoice" Content="Clear" Margin="10" ToolTip="Clear the date" Click="btnClearDtpInvoice_Click"></Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Image Grid.Row="0" Grid.Column="0" Source="Logo.png"/>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                <Label x:Name="lblUser" Content="User:" FontSize="20" Margin="10"/>
+                <Label x:Name="lblNameUser" Content="Label" FontSize="20" FontWeight="Bold" Margin="10"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
+                <Label x:Name="lblDate" Content="Date:" FontSize="20" Margin="10"/>
+                <Label x:Name="lblDateTime" Content="Label" FontSize="20" FontWeight="Bold" Margin="10"/>
+            </StackPanel>
+        </StackPanel>
+
+        <ComboBox SelectedIndex="1" Grid.Row="0" Grid.Column="2" Margin="30,82,148,57">
+            <ComboBoxItem Content="Español"/>
+            <ComboBoxItem Content="English"/>
+        </ComboBox>
+
+    </Grid>
+</Window>

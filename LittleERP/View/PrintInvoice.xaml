@@ -1,0 +1,13 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LittleERP.View"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="LittleERP.View.PrintInvoice"
+        mc:Ignorable="d"
+        Title="PrintInvoice" Height="1080" Width="1920">
+    <Grid Loaded="Grid_Loaded">
+        <Viewer:CrystalReportsViewer x:Name="Cr1"  Height="auto"  Width="auto"/>
+    </Grid>
+</Window>

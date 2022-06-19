@@ -1,0 +1,6 @@
+Usuarios y contraseñas:
+root - root
+Antonio - Antonio
+Pedro - pedro
+Juana - Juana
+Francisca - Francisca

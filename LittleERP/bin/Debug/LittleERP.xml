@@ -1,0 +1,758 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LittleERP</name>
+    </assembly>
+    <members>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LittleERP.Domain.Manage.CustomerManage"/> class.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.readAll">
+            Metodo que lee todo de cada cliente existente en la tabla de Customers y se añaden a la lista generica
+            <summary>
+            Retrieves all the customers from the database.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.readCustomer(LittleERP.Domain.Customer)">
+            Metodo igual que el de readAll, pero se le pasa un customer por parametro y busca un customer por un nombre o nif
+            <summary>
+            Retrieves a customer from the database given a customer with a name or NIF.
+            </summary>
+            <param name="customer">The customer.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.insertCustomer(LittleERP.Domain.Customer)">
+            Insertar un customer en la tabla de Customers, se necesita buscar el maximo id+1 y el idzipcodescities
+            <summary>
+            Inserts the customer in the database.
+            </summary>
+            <param name="customer">The customer.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.removeCustomer(LittleERP.Domain.Customer)">
+            Metodo para eliminar un customer de la tabla Customers, se busca por su id
+            <summary>
+            Removes the customer from the database.
+            </summary>
+            <param name="customer">The customer.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.modifyCustomer(LittleERP.Domain.Customer)">
+            Metodo para modificar un customer de la tabla Customers, se modifica todo practicamente menos el NIF
+            <summary>
+            Modifies the customer from the database.
+            </summary>
+            <param name="customer">The customer.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.chargeRegions">
+            Metodo para cargar todas las regiones y añadirlas a la lista generica
+            <summary>
+            Retrieves all regions from the database.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.chargeRegions(LittleERP.Domain.Zipcode)">
+            Metodo para cargar regiones en base a un zipcode dado por parametro
+            <summary>
+            Retrieves all regions given a zipcode by parameter.
+            </summary>
+            <param name="zip">The zip.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.chargeCities(LittleERP.Domain.State)">
+            Metodo para cargar las ciudades en base a un state dado por parametro
+            <summary>
+            Retrieves all cities given a state by parameter.
+            </summary>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.chargeCities(LittleERP.Domain.Zipcode)">
+            Metodo para cargar las ciudades en base a un zipcode dado por parametro
+            <summary>
+            Retrieves all cities given a zipcode by parameter.
+            </summary>
+            <param name="zip">The zip.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.chargeZipcodes(LittleERP.Domain.City,LittleERP.Domain.State)">
+            Metodo para cargar los zipcodes en base a una ciudad y state dados por parametro
+            <summary>
+            Retrieves all zipcodes given a city and a state by parameter.
+            </summary>
+            <param name="city">The city.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.searchZipcode(System.String)">
+            Metodo para buscar un zipcode en base a un zipcode dado por parametro, se busca por su "nombre"
+            <summary>
+            Searches the zipcode gizen a zipcode by parameter.
+            </summary>
+            <param name="zip">The zip.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.chargeStates(LittleERP.Domain.Region)">
+            Metodo para cargar los States en base a una region dada por parametro
+            <summary>
+            Retrieves all states given a region by parameter.
+            </summary>
+            <param name="region">The region.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.CustomerManage.chargeStates(LittleERP.Domain.Zipcode)">
+            Metodo para cargar los States en base a un zipcode dado por parametro
+            <summary>
+            Retrieves all states given a zipcode by parameter.
+            </summary>
+            <param name="zip">The zip.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.InvoiceManage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LittleERP.Domain.Manage.InvoiceManage"/> class.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.InvoiceManage.readAll">
+            <summary>
+            Retrieves all the invoices from the database
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.InvoiceManage.readInvoiceByOrder(LittleERP.Domain.Order)">
+            <summary>
+            Retrieves a invoice from the database given an order by parameter
+            </summary>
+            <param name="o">The o.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.InvoiceManage.readInvoiceByDate(LittleERP.Domain.Invoice)">
+            <summary>
+            Retrieves invoices from the database given a date by parameter.
+            </summary>
+            <param name="i">The i.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.InvoiceManage.generateInvoiceInfo(LittleERP.Domain.Invoice)">
+            <summary>
+            Generates the invoice information.
+            </summary>
+            <param name="i">The i.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.InvoiceManage.insertInvoice(LittleERP.Domain.Invoice,LittleERP.Domain.Order)">
+            <summary>
+            Inserts the invoice in the database
+            </summary>
+            <param name="i">The i.</param>
+            <param name="o">The o.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.InvoiceManage.generateInvoiceID(LittleERP.Domain.Invoice)">
+            <summary>
+            Generates the invoice identifier.
+            </summary>
+            <param name="i">The i.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.InvoiceManage.updateAccounted(LittleERP.Domain.Invoice)">
+            <summary>
+            Updates the state accounted.
+            </summary>
+            <param name="i">The i.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.InvoiceManage.deleteInvoice(LittleERP.Domain.Invoice)">
+            <summary>
+            Deletes the invoice from the database.
+            </summary>
+            <param name="i">The i.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LittleERP.Domain.Manage.OrderManage"/> class.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.readAllOrders">
+            Lee todos los orders y los añade a una lista generica
+            <summary>
+            Retrieves all the orders from the database
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.readOrderByDate(LittleERP.Domain.Order)">
+            Lee todos los order por una fecha especifica
+            <summary>
+            Retrieves orders from the database given a date by parameter.
+            </summary>
+            <param name="order">The order.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.readOrderByInvoice(LittleERP.Domain.Invoice)">
+            <summary>
+            Retrieves orders from the database given an invoice by parameter
+            </summary>
+            <param name="i">The i.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.generateOrderID(LittleERP.Domain.Order)">
+            Genera un orderID nuevo ya que contiene la fecha y está numerado (YYYYMMDD0000)
+            Consulta la fecha a la base de datos
+            <summary>
+            Generates the order identifier.
+            </summary>
+            <param name="order">The order.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.insertOrder(LittleERP.Domain.Order)">
+            Inserta un order dado por parametro a la base de datos, se le da la fecha actual de cuando se ha insertado en la base de datos
+            <summary>
+            Inserts the order in the database.
+            </summary>
+            <param name="order">The order.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.deleteOrder(LittleERP.Domain.Order)">
+            Elimina un order dado por parametro
+            <summary>
+            Deletes the order from the database.
+            </summary>
+            <param name="order">The order.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.readAllPayments">
+            Lee todos los metodos de pago y los inserta en una lista generica
+            <summary>
+            Retrieves all the payment methods from the database.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.readPayment(LittleERP.Domain.PaymentMethod)">
+            Lee un metodo de pago dado por parametro
+            <summary>
+            Retrieves a payment method from the database given an id by parameter.
+            </summary>
+            <param name="payment">The payment.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.readOrderProducts(LittleERP.Domain.Order)">
+            Lee los orderproducts de un order especifico, hay que hacer union con la tabla genericproducts por si hay un producto generico
+            <summary>
+            Retrieves all order products from the database given an order id by parameter.
+            </summary>
+            <param name="order">The order.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.OrderManage.updateOrderStatus(LittleERP.Domain.Order)">
+            Actualiza el estado de un order dado por parametro
+            <summary>
+            Updates the order status.
+            </summary>
+            <param name="order">The order.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.ProductManage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LittleERP.Domain.Manage.ProductManage"/> class.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.ProductManage.readAllProducts">
+            Metodo para leer todos los productos
+            <summary>
+            Retrieves all products from the database.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.ProductManage.readProductName(LittleERP.Domain.Product)">
+            Metodo para leer un producto especifico por nombre
+            <summary>
+            Retrieves all products given a name by parameter.
+            </summary>
+            <param name="product">The product.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.ProductManage.readProduct(LittleERP.Domain.Product)">
+            <summary>
+            Retrieves a product from the database given a id by parameter.
+            </summary>
+            <param name="product">The product.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.ProductManage.insertProduct(LittleERP.Domain.Product)">
+            Metodo para insertar un producto indicado por parametro
+            <summary>
+            Inserts the product in the database.
+            </summary>
+            <param name="product">The product.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.ProductManage.removeProduct(LittleERP.Domain.Product)">
+            Metodo para eliminar un producto indicado por parametro
+            <summary>
+            Removes the product from the database.
+            </summary>
+            <param name="product">The product.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.ProductManage.modifyProduct(LittleERP.Domain.Product)">
+            Metodo para modificar un producto indicado por parametro
+            <summary>
+            Modifies the product from the database.
+            </summary>
+            <param name="product">The product.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.ProductManage.chargeSizes">
+            Metodo para leer todos los tamaños de producto de la tabla Sizes
+            <summary>
+            Retrieves all product sizes from the database.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.ProductManage.chargeBrands">
+            Metodo para leer todas las marcas de producto de la tabla Brands
+            <summary>
+            Retrieves all product brands from the database
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.SupplierManage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LittleERP.Domain.Manage.SupplierManage"/> class.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.SupplierManage.readAll">
+            <summary>
+            Retrieves all suppliers from a json.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.PermissionManage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LittleERP.Domain.Manage.PermissionManage"/> class.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.PermissionManage.readAll">
+            <summary>
+            Retrieves all permissions from the database.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.PermissionManage.readPermissions(LittleERP.Domain.Role)">
+            <summary>
+            Retrieves all permissions from the database given a role by parameter.
+            </summary>
+            <param name="role">The role.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.RoleManage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LittleERP.Domain.Manage.RoleManage"/> class.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.RoleManage.readAll">
+            <summary>
+            Retrieves all roles from the database.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.RoleManage.readRoles(System.Int32)">
+            Lee los roles de un usuario
+            <summary>
+            Retrieves all the roles of a user from the database given a id by parameter.
+            </summary>
+            <param name="idUser">The identifier user.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.RoleManage.changeRole(LittleERP.Domain.Role,System.Collections.Generic.List{LittleERP.Domain.Permission})">
+            Cambia los permisos de un rol en base a una lista de permisos
+            <summary>
+            Modify the permissions of a role.
+            </summary>
+            <param name="role">The role.</param>
+            <param name="permissions">The permissions.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LittleERP.Domain.Manage.UserManage"/> class.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.readAll">
+            <summary>
+            Retrieves all users from the database.
+            </summary>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.readAllMinus(LittleERP.Domain.User)">
+            Metodo que lee todos los usuarios menos root y el propio usuario dado por parametro
+            <summary>
+            Retrieves all users from the database except the user of the parameter.
+            </summary>
+            <param name="u">A user.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.readUser(LittleERP.Domain.User)">
+            <summary>
+            Retrieves a user from the database given a user with an id.
+            </summary>
+            <param name="user">The user.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.insertUser(LittleERP.Domain.User,System.Collections.Generic.List{LittleERP.Domain.Role})">
+            Metodo en el que se insertan usuarios a la tabla USERS Y USER_ROLES
+            <summary>
+            Inserts a user and user roles in the database.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="roles">The roles.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.checkUser(LittleERP.Domain.User)">
+            Metodo que comprueba que existe un usuario dado por parametro
+            en una tabla, comprueba si hay un usuario con el mismo nombre y contraseña
+            <summary>
+            Checks the user exists
+            </summary>
+            <param name="user">The user.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.readUserId(LittleERP.Domain.User)">
+            <summary>
+            Reads the user id given a user with a name and a password.
+            </summary>
+            <param name="user">The user.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.checkUserName(LittleERP.Domain.User)">
+            Metodo que comprueba que existe un usuario con cierto nombre
+            <summary>
+            Checks the name of the user.
+            </summary>
+            <param name="user">The user.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.deleteUser(LittleERP.Domain.User)">
+            ¡BORRADO LOGICO! Deja el campo deleted de ese usuario a 1
+            
+            <summary>
+            Deletes the user.
+            </summary>
+            <param name="user">The user.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.changePassword(LittleERP.Domain.User)">
+            Cambia la contraseña de un usuario
+            <summary>
+            Changes the password of a user.
+            </summary>
+            <param name="user">The user.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.changeUser(LittleERP.Domain.User,System.Collections.Generic.List{LittleERP.Domain.Role})">
+            Cambia la contraseña y roles de un usuario
+            elimina los roles actuales del usuario e inserta los nuevos
+            <summary>
+            Changes the user password and roles.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="roles">The roles.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.chargePrivileges(LittleERP.Domain.User)">
+            Carga los privilegios de un usuario en base a los roles que tenga asignados
+            <summary>
+            Charges the privileges of a user.
+            </summary>
+            <param name="user">The user.</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.isFirstSession(LittleERP.Domain.User)">
+            Metodo para saber si es la primera sesion del usuario
+            <summary>
+            Determines whether [is first session] [the specified user].
+            </summary>
+            <param name="user">The user.</param>
+            <returns>
+              <c>true</c> if [is first session] [the specified user]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.markFirstSession(LittleERP.Domain.User,System.Boolean)">
+            Metodo para marcar la primera sesión de un usuario
+            <summary>
+            Marks the first session of a user.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="first">if set to <c>true</c> [first].</param>
+        </member>
+        <member name="M:LittleERP.Domain.Manage.UserManage.readSelectUsers(LittleERP.Domain.User,System.String)">
+            Lee todos los usuarios en base a busqueda de nombre
+            <summary>
+            Retrieves from the database the selected users.
+            </summary>
+            <param name="u">The u.</param>
+            <param name="name">The name.</param>
+        </member>
+        <member name="T:LittleERP.View.DataSet1">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.DataSet1.OrderProductsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.DataSet1.InfoInvoiceDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.DataSet1.OrderProductsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.DataSet1.InfoInvoiceRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.DataSet1.OrderProductsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.DataSet1.InfoInvoiceRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.PrintInvoice">
+            <summary>
+            Lógica de interacción para PrintInvoice.xaml
+            </summary>
+            <summary>
+            PrintInvoice
+            </summary>
+        </member>
+        <member name="M:LittleERP.View.PrintInvoice.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.RolP">
+            <summary>
+            Lógica de interacción para RolP.xaml
+            </summary>
+            <summary>
+            RolP
+            </summary>
+        </member>
+        <member name="M:LittleERP.View.RolP.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.ZoomOrder">
+            <summary>
+            Lógica de interacción para ZoomOrder.xaml
+            </summary>
+            <summary>
+            ZoomOrder
+            </summary>
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.#ctor(LittleERP.View.ControlPanel,System.Boolean)">
+            Constructor para crear un nuevo order, se da por parametro el ControlPanel
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.#ctor(LittleERP.Domain.Order,LittleERP.View.ControlPanel)">
+            Constructor para ver la información de un order dado por parametro
+            no se permite la modificación por lo que se desactivan todos los campos
+            Se da por parametro el order a ver y el ControlPanel
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.Image_MouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            Evento de click para elegir un customer, deja el ControlPanel solo con la parte de customers y le da esta ventana como atributo (Ya que funciona como un objeto)
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.imgChooseProduct_MouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            Evento de click para elegir un producto, deja el ControlPanel solo con la parte de products y le da esta ventana como atributo (Ya que funciona como objeto)
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.Window_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            Evento al cerrar esta ventana, deja el ControlPanel visible y le quita de atributo esta ventana
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.btnSaveOrderProduct_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento de boton para guardar un OrderProduct, si es un GenericProduct se deducirá por su descripción
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.btnAddOrderProduct_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento de boton para añadir un nuevo producto al order, limpia los campos y habilita lo necesario para insertar un producto
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.btnDelOrderProduct_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento de boton de borrado de producto al order, borra en caso de que haya un producto seleccionado del datagrid
+            borra independientemente de si es generic o no
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.btnSaveOrder_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento de boton para guardar el order entero una vez se ha decidido todo y lo inserta en la tabla
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.btnOthOrderProduct_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento de boton que habilita los campos necesarios para insertar un producto generico (Con ID -1 y una descripcion) a Orderproducts
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.txtProductQuantityOrder_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
+            Evento que antes de que se introduzca texto en el textbox compruebe que el input es un numero mediante un regex
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.dgvOrderProducts_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            Al seleccionar un OrderProduct del datagrid se carga a la derecha con sus datos por si se quiere ver en detalle o machacarlo con otros detalles
+        </member>
+        <member name="M:LittleERP.View.ZoomOrder.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.AUsers">
+            <summary>
+            AUsers
+            </summary>
+        </member>
+        <member name="M:LittleERP.View.AUsers.#ctor(System.Windows.Controls.DataGrid,LittleERP.Domain.User)">
+            
+            Constructor para añadir, no necesita ningun parametro, carga entera la lista de roles en allowed
+            NOTA: Mucho cuidado con la incoherencia de accesibilidad, se debe poner en public las clases (Ya que class asecas es private)
+        </member>
+        <member name="M:LittleERP.View.AUsers.#ctor(System.Windows.Controls.DataGrid,LittleERP.Domain.User,LittleERP.Domain.User)">
+            Constructor para modificar modificar los roles de un usuario, por lo que desactiva el insertar el nombre
+        </member>
+        <member name="M:LittleERP.View.AUsers.#ctor(LittleERP.Domain.User)">
+            Constructor que solo se utiliza para el cambio de contraseña de un usuario dado por parametro, solo está activo el cambio de contraseña
+        </member>
+        <member name="M:LittleERP.View.AUsers.btnAddAssigned_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Pasan los elementos seleccionados de Assigned a Allowed
+        </member>
+        <member name="M:LittleERP.View.AUsers.btnAddAllowed_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Pasan los elementos seleccionados de Allowed a Assigned
+        </member>
+        <member name="M:LittleERP.View.AUsers.btnOk_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Accion del boton OK, dependiendo del tipo de operacion asignado añadirá o modificará un usuario
+        </member>
+        <member name="M:LittleERP.View.AUsers.addUser">
+            Metodo para añadir usuario, comprueba que no existe ese usuario y que tiene al menos un rol asignado
+            Obliga al usuario al iniciar por primera vez sesión a cambiar contraseña
+            AÑADE EN LA TABLA USER Y USER_ROLES
+        </member>
+        <member name="M:LittleERP.View.AUsers.modUser">
+            Metodo para modificar un usuario, comprueba que la contraseña es diferente a la que tiene actualmente
+            Obliga al usuario a cambiar contraseña en el siguiente inicio de sesión
+            Modifica el rol asignado y la contraseña, por lo que modifica tambien la tabla de USER_ROLES
+        </member>
+        <member name="M:LittleERP.View.AUsers.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.ControlPanel">
+            <summary>
+            Lógica de interacción para ControlPanel.xaml
+            </summary>
+            <summary>
+            ControlPanel
+            </summary>
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnDel_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Boton de borrar usuarios (Borrado logico)
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnChangePassword_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Boton para cambiar la contraseña del propio usuario
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnSearch_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Boton de busqueda
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.cboRegions_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            Selection changed de regions, al elegirlo carga states
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.cboStates_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            Selection changed de states, al elegirlo carga Cities
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.cboCities_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            Selection changed de cities, al elegirlo carga Zipcodes
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.txtZipcode_KeyUp(System.Object,System.Windows.Input.KeyEventArgs)">
+            Evento que al pulsar una tecla comprueba el tamaño del textbox de los zipcodes, si es igual a 5 quiere decir que se ha introducido un zipcode y se cargan
+            el resto de campos en base al zipcode
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnSaveCustomer_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento que añade un usuario a la base de datos en base a los campos que se han rellenado
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.dgvCustomers_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            Evento que al seleccionar un customer del datagrid de customers, se cargan sus datos en los campos de la derecha
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnNewCustomer_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Boton de nuevo cliente, vacia los campos y crea un nuevo objeto Cliente
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnDelCustomer_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento de boton que al tener seleccionado un customer y darle a eliminar se borra el customer seleccionado tanto de la base de datos como de el datagrid
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.dgvProducts_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            Evento que al seleccionar un producto del datagrid de productos, se cargan sus datos en los campos de la derecha
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnProductSave_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Boton de guardar producto en la base de datos
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnProductNew_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Boton de nuevo producto, vacia los campos y crea un nuevo objeto Producto
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnProductDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Boton de borrar producto elegido del datagrid
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.cell_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento para cuando le des a una celda doble click, cambia su color y muestra el numero de columna (Temporal)
+            se utilizará mas tarde para controlar los estados de orders
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnOrderNew_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento de boton para abrir una ventana donde se creará un order
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.dgvSuppliers_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            Evento que al seleccionar un supplier del datagrid de suppliers, se cargan sus campos de la derecha
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.dgvProducts_MouseDoubleClick(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            Evento que al hacer doble click al datagrid y si hay un producto seleccionado y si la ventana de ZoomOrder está abierta traerá el producto hasta esa ventana
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.dgvCustomers_MouseDoubleClick(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            Evento que al hacer doble click al datagrid y si hay un customer seleccionado y si la ventana de ZoomOrder está abierta traerá el customer hasta esa ventana
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnOrderZoom_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento de boton que al darle click abrirá la ventana de ZoomOrder para ver detalladamente la información del order seleccionado
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnOrderDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento de boton que al darle click eliminará un order seleccionado del datagrid
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.dtpFechaOrder_SelectedDateChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            Evento de datepicker que al cambiar de fecha cargará los orders de esa fecha
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.btnClearDtpOrder_Click(System.Object,System.Windows.RoutedEventArgs)">
+            Evento de boton para limpiar el datepicker y leer de nuevo todos los orders
+        </member>
+        <member name="M:LittleERP.View.ControlPanel.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:LittleERP.View.MainWindow">
+            <summary>
+            Lógica de interacción para MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:LittleERP.View.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:LittleERP.resources.useful.validatePassword(System.String)">
+            Valida la contraseña, es valida si:
+            Tiene al menos un numero
+            Tiene al menos una letra minuscula
+            Tiene al menos una letra mayuscula
+            Tiene al menos un simbolo
+            La longitud minima es de 8 caracteres
+        </member>
+        <member name="T:LittleERP.App">
+            <summary>
+            Lógica de interacción para App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:LittleERP.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:LittleERP.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="M:LittleERP.ConnectOracle.getData(System.String,System.String)">
+            Method to retrieve a set of data
+            Parameter: Query
+            Parameter: Table
+        </member>
+        <member name="M:LittleERP.ConnectOracle.setData(System.String)">
+            Method to insert data in a table
+            Parameter: Sentence 
+        </member>
+        <member name="M:LittleERP.ConnectOracle.DLookUp(System.String,System.String,System.String)">
+            Method to retrieve only one value
+            Parameter: column
+            Parameter: Table
+            Parameter: Condition
+        </member>
+        <member name="T:LittleERP.Properties.Resources">
+            <summary>
+              Clase de recurso fuertemente tipado para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:LittleERP.Properties.Resources.ResourceManager">
+            <summary>
+              Devuelve la instancia ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:LittleERP.Properties.Resources.Culture">
+            <summary>
+              Invalida la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos usando esta clase de recursos fuertemente tipados.
+            </summary>
+        </member>
+    </members>
+</doc>

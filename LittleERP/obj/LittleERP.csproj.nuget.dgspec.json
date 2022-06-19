@@ -1,0 +1,78 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Repositorios\\Desarrollo_de_interfaces\\VisualStudio\\DataBase\\LittleERP\\LittleERP.csproj": {}
+  },
+  "projects": {
+    "E:\\Repositorios\\Desarrollo_de_interfaces\\VisualStudio\\DataBase\\LittleERP\\LittleERP.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Repositorios\\Desarrollo_de_interfaces\\VisualStudio\\DataBase\\LittleERP\\LittleERP.csproj",
+        "projectName": "LittleERP",
+        "projectPath": "E:\\Repositorios\\Desarrollo_de_interfaces\\VisualStudio\\DataBase\\LittleERP\\LittleERP.csproj",
+        "packagesPath": "C:\\Users\\javit\\.nuget\\packages\\",
+        "outputPath": "E:\\Repositorios\\Desarrollo_de_interfaces\\VisualStudio\\DataBase\\LittleERP\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\javit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net471"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net471": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {
+          "dependencies": {
+            "MahApps.Metro": {
+              "target": "Package",
+              "version": "[2.4.9, )"
+            },
+            "Microsoft.Windows.SDK.Contracts": {
+              "target": "Package",
+              "version": "[10.0.18362.2005, )"
+            },
+            "ModernWpfUI": {
+              "target": "Package",
+              "version": "[0.9.4, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Oracle.ManagedDataAccess": {
+              "target": "Package",
+              "version": "[21.4.0, )"
+            }
+          },
+          "imports": [
+            "uap10.0.18362"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

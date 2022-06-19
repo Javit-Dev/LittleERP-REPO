@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleERP", "LittleERP.csproj", "{E2946C8A-B1CA-450A-87B0-D284364AB783}"
+EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "DocumentationLittleErp", "..\DocumentationLittleErp\DocumentationLittleErp.shfbproj", "{B187561B-6B44-47CF-B3DC-F4FD1E61D38B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2946C8A-B1CA-450A-87B0-D284364AB783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2946C8A-B1CA-450A-87B0-D284364AB783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2946C8A-B1CA-450A-87B0-D284364AB783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2946C8A-B1CA-450A-87B0-D284364AB783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B187561B-6B44-47CF-B3DC-F4FD1E61D38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B187561B-6B44-47CF-B3DC-F4FD1E61D38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B187561B-6B44-47CF-B3DC-F4FD1E61D38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B187561B-6B44-47CF-B3DC-F4FD1E61D38B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16B58A26-0B78-4507-A873-DCF4E49E88BB}
+	EndGlobalSection
+EndGlobal
